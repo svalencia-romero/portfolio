@@ -1,7 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const emailLink = document.getElementById('email-link');
+
+    emailLink.addEventListener('click', function (event) {
+      // Previene la acción por defecto del enlace (evita navegar a la dirección de correo electrónico)
+      event.preventDefault();
+
+      // Obtiene la dirección de correo electrónico del atributo data-email
+      const emailAddress = emailLink.getAttribute('data-email');
+
+      // Crea un elemento de texto temporal
+      const tempInput = document.createElement('input');
+      tempInput.value = emailAddress;
+
+      // Añade el elemento temporal al DOM
+      document.body.appendChild(tempInput);
+
+      // Selecciona el texto en el elemento temporal
+      tempInput.select();
+
+      // Copia el texto al portapapeles
+      document.execCommand('copy');
+
+      // Elimina el elemento temporal del DOM
+      document.body.removeChild(tempInput);
+
+      // Puedes mostrar un mensaje o realizar otras acciones después de copiar
+      alert('Email copied to clipboard: ' + emailAddress);
+      });
+    });
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" type="image/png" href="./images/favicon.png" />
@@ -217,8 +250,7 @@
         <p>
           Are you seeking expertise in data science for robust analysis and insights? Whether it's data-driven solutions, consultation, inquiries, or just a friendly "Hi 👋," feel free to reach out. You can contact me via email or phone, and I'll strive to respond promptly. 😊
         </p>
-        <!-- Replace the email with yours -->
-        <a href="santiagovalenciaromero0@gmail.com" class="btn">santiagovalenciaromero0@gmail.com</a>
+        <a href="#" id="email-link" data-email="santiagovalenciaromero0@gmail.com" class="btn">santiagovalenciaromero0@gmail.com</a>
       </div>
     </div>
   </section>
